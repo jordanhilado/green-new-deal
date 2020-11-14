@@ -16,6 +16,7 @@ import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
 import Info from './components/Info';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const sections = [
-  { title: 'What is the Green New Deal?',  },
+  { title: 'What is the Green New Deal?', url: 'Info' },
   { title: 'History', url: '#' },
   { title: 'Data', url: '#' },
   { title: 'Supporters', url: '#' },
@@ -90,6 +91,11 @@ export default function Blog() {
 
   return (
     <React.Fragment>
+      <Router>
+      <Switch>
+        <Route path='/Info' exact component={Info} />
+      </Switch>
+    </Router>
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="The Green New Deal" sections={sections} />
